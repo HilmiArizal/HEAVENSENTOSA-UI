@@ -7,7 +7,10 @@ import LegalitasModal from './components/LegalitasModal';
 import TentangKamiModal from './components/TentangKamiModal';
 import { Flame, Database, Server, AlertCircle } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5005/api';
+const API_BASE = window.location.origin.includes('localhost:5173')
+  ? 'http://localhost:5005/api'
+  : 'https://heavensentosa-api-production.up.railway.app/api';
+
 
 const INITIAL_CATEGORIES = [];
 
