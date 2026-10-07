@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Flame, MessageCircle, Check, Package, Image as ImageIcon } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5005';
+const API_BASE = 'https://heavensentosa-api-production.up.railway.app';
 
 export default function ProductModal({ product, onClose }) {
   if (!product) return null;
@@ -181,18 +181,10 @@ export default function ProductModal({ product, onClose }) {
                   <span style={{ color: 'var(--text-muted)' }}>Kemasan Terpilih:</span>
                   <span style={{ fontWeight: '700', color: 'var(--accent-gold)' }}>{selectedVariant.unit}</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.4rem 0', borderBottom: '1px solid rgba(255,255,255,0.05)', fontSize: '0.88rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Kandungan Daging:</span>
-                  <span style={{ fontWeight: '600', color: '#fff' }}>{product.meatContent || 'Daging Sapi Murni'}</span>
-                </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '0.4rem', fontSize: '0.88rem' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Tingkat Pedas:</span>
-                  <span style={{ fontWeight: '600', color: '#fff', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    {product.spicyLevel > 0 ? (
-                      Array.from({ length: product.spicyLevel }).map((_, i) => (
-                        <Flame key={i} size={14} color="#f97316" fill="#f97316" />
-                      ))
-                    ) : 'Tidak Pedas'}
+                  <span style={{ color: 'var(--text-muted)' }}>Status Stok:</span>
+                  <span style={{ fontWeight: '700', color: '#10b981', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Check size={14} /> {selectedVariant.stock || product.stock || 'Tersedia'}
                   </span>
                 </div>
               </div>

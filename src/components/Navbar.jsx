@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, LogIn, Award, Info, Package, LogOut, Menu, X } from 'lucide-react';
+import { ShieldCheck, LogIn, Award, Info, Package, LogOut, Menu, X, Users } from 'lucide-react';
 
 export default function Navbar({ 
   activeRole, 
@@ -25,6 +25,18 @@ export default function Navbar({
     }, 150);
   };
 
+  const scrollToKonsumen = () => {
+    if (activeRole !== 'user') {
+      setActiveRole('user');
+    }
+    setTimeout(() => {
+      const el = document.getElementById('konsumen-section');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 150);
+  };
+
   return (
     <nav className="glass-nav">
       <div className="container nav-header-container">
@@ -44,7 +56,7 @@ export default function Navbar({
               CV. HEAVEN SENTOSA
             </h1>
             <div className="nav-brand-subtitle">
-              PRODUCT CATALOG
+              ALL ABOUT MEAT
             </div>
           </div>
         </div>
@@ -59,6 +71,16 @@ export default function Navbar({
           >
             <Package size={16} style={{ color: 'var(--accent-gold)' }} /> 
             <span>Produk Kami</span>
+          </button>
+
+          <button
+            className="nav-link-btn"
+            onClick={scrollToKonsumen}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#f97316'; e.currentTarget.style.background = 'rgba(249, 115, 22, 0.1)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-main)'; e.currentTarget.style.background = 'transparent'; }}
+          >
+            <Users size={16} style={{ color: '#f97316' }} /> 
+            <span>Konsumen Kami</span>
           </button>
 
           <button
@@ -126,6 +148,14 @@ export default function Navbar({
           >
             <Package size={18} style={{ color: 'var(--accent-gold)' }} /> 
             <span>Produk Kami</span>
+          </button>
+
+          <button
+            className="mobile-drawer-btn"
+            onClick={() => { setMobileMenuOpen(false); scrollToKonsumen(); }}
+          >
+            <Users size={18} style={{ color: '#f97316' }} /> 
+            <span>Konsumen Kami</span>
           </button>
 
           <button

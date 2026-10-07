@@ -1,7 +1,7 @@
 import React from 'react';
 import { Flame, Eye, MessageCircle, Layers } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5005';
+const API_BASE = 'https://heavensentosa-api-production.up.railway.app';
 
 export default function ProductCard({ product, onSelect }) {
   const formatPrice = (amount) => {

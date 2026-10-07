@@ -341,17 +341,17 @@ export default function App() {
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
           <div>
             <span style={{ color: '#fff', fontWeight: '700' }}>Sosis Heaven Sentosa</span> &copy; 2026.
-            <span style={{ marginLeft: '0.75rem', fontSize: '0.85rem', color: dataSource.includes('MongoDB') ? '#4ade80' : '#f87171', fontWeight: '700', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            {/* <span style={{ marginLeft: '0.75rem', fontSize: '0.85rem', color: dataSource.includes('MongoDB') ? '#4ade80' : '#f87171', fontWeight: '700', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
               <Server size={15} /> Database: {dataSource}
-            </span>
+            </span> */}
           </div>
-          <button 
+          {/* <button 
             className="btn btn-secondary btn-sm"
             onClick={() => { fetchProducts(); fetchCategories(); }}
             style={{ fontSize: '0.78rem' }}
           >
             Refresh Database Link
-          </button>
+          </button> */}
         </div>
       </footer>
     </div>
