@@ -17,7 +17,9 @@ const INITIAL_CATEGORIES = [];
 const INITIAL_PRODUCTS = [];
 
 export default function App() {
-  const [activeRole, setActiveRole] = useState('user');
+  const [activeRole, setActiveRole] = useState(() => {
+    return localStorage.getItem('hs_admin_token') === 'true' ? 'admin' : 'user';
+  });
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState(['All', ...INITIAL_CATEGORIES]);
   const [activeCategory, setActiveCategory] = useState('All');
@@ -30,6 +32,19 @@ export default function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isLegalitasOpen, setIsLegalitasOpen] = useState(false);
   const [isTentangOpen, setIsTentangOpen] = useState(false);
+
+  // Auth Handlers
+  const handleAdminLoginSuccess = () => {
+    localStorage.setItem('hs_admin_token', 'true');
+    setActiveRole('admin');
+    showToast('Berhasil masuk ke Dashboard Admin!');
+  };
+
+  const handleAdminLogout = () => {
+    localStorage.removeItem('hs_admin_token');
+    setActiveRole('user');
+    showToast('Berhasil keluar mode Admin!');
+  };
 
 
   // Toast notification
@@ -274,20 +289,14 @@ export default function App() {
         onOpenLegalitas={() => setIsLegalitasOpen(true)}
         onOpenTentang={() => setIsTentangOpen(true)}
         onOpenLogin={() => setIsLoginModalOpen(true)}
-        onLogout={() => {
-          setActiveRole('user');
-          showToast('Anda telah keluar dari mode admin');
-        }}
+        onLogout={handleAdminLogout}
       />
 
       {/* Modals */}
       <AdminLoginModal 
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
-        onLoginSuccess={() => {
-          setActiveRole('admin');
-          showToast('Login berhasil! Selamat datang Admin');
-        }}
+        onLoginSuccess={handleAdminLoginSuccess}
       />
 
       <LegalitasModal 
@@ -338,20 +347,10 @@ export default function App() {
         fontSize: '0.9rem',
         color: 'var(--text-muted)'
       }}>
-        <div className="container" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
+        <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
           <div>
-            <span style={{ color: '#fff', fontWeight: '700' }}>Sosis Heaven Sentosa</span> &copy; 2026.
-            {/* <span style={{ marginLeft: '0.75rem', fontSize: '0.85rem', color: dataSource.includes('MongoDB') ? '#4ade80' : '#f87171', fontWeight: '700', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <Server size={15} /> Database: {dataSource}
-            </span> */}
+            <span style={{ color: '#fff', fontWeight: '700' }}>CV. Heaven Sentosa</span> &copy; 2026.
           </div>
-          {/* <button 
-            className="btn btn-secondary btn-sm"
-            onClick={() => { fetchProducts(); fetchCategories(); }}
-            style={{ fontSize: '0.78rem' }}
-          >
-            Refresh Database Link
-          </button> */}
         </div>
       </footer>
     </div>

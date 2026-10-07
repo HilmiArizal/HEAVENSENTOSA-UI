@@ -11,7 +11,7 @@ export default function AdminLoginModal({ isOpen, onClose, onLoginSuccess }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Simple admin login credential check
-    if (username === 'admin' && (password === 'Heavensentosa@2026' || password === 'admin')) {
+    if (username === 'admin' && (password === 'Heavensentosa@2026')) {
       setErrorMsg('');
       onLoginSuccess();
       onClose();
