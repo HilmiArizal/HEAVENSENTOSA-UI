@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Save, PlusCircle, Edit3, Upload, Image as ImageIcon, CheckCircle, Loader2, Plus, Trash2, Package } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5005';
+const API_BASE = 'https://heavensentosa-api-production.up.railway.app';
 
 export default function ProductFormModal({ product, categories = [], onClose, onSave }) {
   // Available non-All category list

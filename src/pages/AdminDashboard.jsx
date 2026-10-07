@@ -3,7 +3,7 @@ import ProductFormModal from '../components/ProductFormModal';
 import CategoryManagerModal from '../components/CategoryManagerModal';
 import { Plus, Edit2, Trash2, Star, ShieldCheck, RefreshCw, Package, Tag } from 'lucide-react';
 
-const API_BASE = 'http://localhost:5005';
+const API_BASE = 'https://heavensentosa-api-production.up.railway.app';
 
 export default function AdminDashboard({ 
   products, 

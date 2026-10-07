@@ -11,12 +11,12 @@ export default function AdminLoginModal({ isOpen, onClose, onLoginSuccess }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Simple admin login credential check
-    if ((username === 'admin' && password === 'admin') || (username === 'admin' && password === 'sosis123')) {
+    if (username === 'admin' && (password === 'Heavensentosa@2026' || password === 'admin')) {
       setErrorMsg('');
       onLoginSuccess();
       onClose();
     } else {
-      setErrorMsg('Username atau password salah! (Default: admin / admin)');
+      setErrorMsg('Username atau password salah!');
     }
   };
 
